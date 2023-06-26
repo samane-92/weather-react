@@ -7,10 +7,14 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather city="New York" />
         <footer>
           This project was coded by{" "}
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel=" noopener noreferrer"
+          >
             {" "}
             Samaneh R.
           </a>{" "}
@@ -18,7 +22,7 @@ function App() {
           <a
             href="https://github.com/samane-92/Plus-Project"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>
