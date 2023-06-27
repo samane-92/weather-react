@@ -8,15 +8,17 @@ export default function Weather(props){
  
 
   function handelResponse(response){
+    console.log(response.data);
     setWeatherData({
-      ready :true,
+      
+      ready: true,
       city: response.data.city,
-      date: "wednesday 10:00",
+      date:"wednesday 10:00 ",
       description: response.data.condition.description,
-      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+      icon_url: response.data.condition.icon_url,
       temperature: Math.round(response.data.temperature.current),
       humidity: response.data.temperature.humidity,
-      wind: response.data.wind.speed,
+      wind: Math.round(response.data.wind.speed),
     });
   }
 
@@ -52,8 +54,8 @@ export default function Weather(props){
           <div className="row mt-3">
             <div className="col-6 d-flex">
               <img
-                src={weatherData.condition.iconUrl}
-                alt={weatherData.condition.description}
+                src={weatherData.icon_url}
+                alt={weatherData.description}
                 className="float-left"
               />
 
@@ -62,18 +64,19 @@ export default function Weather(props){
             </div>
             <div className="col-6">
               <ul>
-                <li>Humidity:{weatherData.temperature.humidity}%</li>
-                <li>Wind:{weatherData.wind.speed}km/h</li>
+                <li>Humidity:{weatherData.humidity}%</li>
+                <li>Wind:{weatherData.wind}km/h</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     );
-  }else{
+  } else{
   const apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(handelResponse);
+  
     return("Loading...");
   }
 
