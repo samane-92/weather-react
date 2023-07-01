@@ -24,23 +24,22 @@ export default function WeatherUnits(props){
         <div className="WeatherUnits">
           <span className="temperature">{props.unit}</span>
           <span className="unit">
+            °C /
             <a href="/" onClick={showFahrenheit}>
               °F{" "}
-            </a>/°C
+            </a>
           </span>
         </div>
       );
     }else{
       return (
         <div className="WeatherUnits">
-          <span className="temperature">
-            {fahrenheit()}
-          </span>
+          <span className="temperature">{fahrenheit()}</span>
           <span className="unit">
-            °F /{" "}
             <a href="/" onClick={showCelsius}>
-              °C
+              °C{" "}
             </a>
+            / °F
           </span>
         </div>
       );
